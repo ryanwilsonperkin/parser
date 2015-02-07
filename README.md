@@ -56,3 +56,30 @@ VAR -> char
 ITEMS -> ITEM ITEMS | e
 ITEM -> car LISTEXPR | str | int | real
 ```
+
+First and Follow Sets
+---
+
+| Token     | First                         | Follow                      |
+|-------------------------------------------------------------------------|
+| STMTS     | ( cdr char set                | $                           |
+| STMTS'    | ( cdr char set e              | $                           |
+| STMT      | ( cdr char set                | ( cdr char set              |
+| ASSIGN    | set                           | ;                           |
+| LISTEXPR  | ( cdr char                    | ;                           |
+| LISTEXPR' | + e                           | ;                           |
+| LISTELEM  | ( cdr char                    | + ;                         |
+| VAR       | char                          | + ; ( cdr char              |
+| ITEMS     | ( car cdr char e int real str | )                           |
+| ITEM      | ( car cdr char int real str   | ( car cdr char int real str |
+| (         | (                             |                             |
+| )         | )                             |                             |
+| +         | +                             |                             |
+| ;         | ;                             |                             |
+| car       | car                           |                             |
+| cdr       | cdr                           |                             |
+| char      | char                          |                             |
+| int       | int                           |                             |
+| real      | real                          |                             |
+| set       | set                           |                             |
+| str       | str                           |                             |
