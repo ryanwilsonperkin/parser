@@ -61,7 +61,7 @@ First and Follow Sets
 ---
 
 | Token     | First                         | Follow                      |
-|-------------------------------------------------------------------------|
+|-----------|-------------------------------|-----------------------------|
 | STMTS     | ( cdr char set                | $                           |
 | STMTS'    | ( cdr char set e              | $                           |
 | STMT      | ( cdr char set                | ( cdr char set              |
