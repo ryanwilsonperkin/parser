@@ -54,7 +54,7 @@ LISTEXPR' -> + LISTELEM LISTEXPR' | e
 LISTELEM -> VAR | ( ITEMS ) | cdr LISTELEM
 VAR -> char
 ITEMS -> ITEM ITEMS | e
-ITEM -> car LISTEXPR | str | int | real
+ITEM -> car LISTEXPR | LISTEXPR | str | int | real
 ```
 
 First and Follow Sets
