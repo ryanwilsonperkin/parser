@@ -48,7 +48,7 @@ __NOTE__: e is the empty string, $ is the end of stream marker.
 STMTS -> STMT STMTS'
 STMTS' -> STMT STMTS' | e
 STMT -> ASSIGN ; | LISTEXPR ;
-ASSIGN -> set VAR LISTEXPR ;
+ASSIGN -> set VAR LISTEXPR
 LISTEXPR -> LISTELEM LISTEXPR'
 LISTEXPR' -> + LISTELEM LISTEXPR' | e
 LISTELEM -> VAR | ( ITEMS ) | cdr LISTELEM
