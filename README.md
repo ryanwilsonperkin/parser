@@ -1,0 +1,23 @@
+Parser
+===
+
+Original Grammar
+---
+
+```
+STMTS -> STMTS STMT | STMT
+STMT -> ASSIGN ;
+STMT -> LISTEXPR ;
+ASSIGN -> set VAR LISTEXPR
+LISTEXPR -> VAR
+LISTEXPR -> CONCAT
+LISTEXPR -> ( ITEMS )
+LISTEXPR -> cdr LISTEXPR
+VAR -> char
+CONCAT -> LISTEXPR + LISTEXPR
+ITEMS -> ITEMS ITEM | ITEM
+ITEM -> LISTEXPR
+ITEM -> str | int | real
+ITEM -> car LISTEXPR
+ITEM ->
+```
