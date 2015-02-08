@@ -29,7 +29,7 @@ char *token_name(token t)
 void error(token *expected, int n_expected)
 {
         int i;
-        fprintf(stderr, "line %d: error: expected ", line_num);
+        fprintf(stderr, "line %d: col %d: error: expected ", line_num, col_num);
         for (i = 0; i < n_expected; i++) {
                 fprintf(stderr, "%s, ", token_name(expected[i]));
         }

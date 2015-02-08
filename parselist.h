@@ -3,6 +3,7 @@
 
 #include "token.h"
 
+extern int col_num;
 extern int line_num;
 
 extern token yylex();
