@@ -37,20 +37,20 @@ __NOTE__: e is the empty string, $ is the end of stream marker.
   - Added ITEMS -> e rule
 - Collapse into unique LHS rules with | separators
 - Resolved left recursive ambiguity of STMTS production
-  - Replaced STMTS -> STMTS + STMT | STMT rule with STMTS -> STMT STMTS'
-  - Added STMTS' -> STMT STMTS' | e rule
+  - Replaced STMTS -> STMTS + STMT | STMT rule with STMTS -> STMT STMTS2
+  - Added STMTS2 -> STMT STMTS2 | e rule
 - Resolved left recursive ambiguity of LISTEXPR production
   - Replaced LISTEXPR -> LISTEXPR + LISTELEM | LISTELEM rule with
-    LISTEXPR -> LISTELEM LISTEXPR'
-  - Added LISTEXPR' -> + LISTELEM LISTEXPR' | e rule
+    LISTEXPR -> LISTELEM LISTEXPR2
+  - Added LISTEXPR2 -> + LISTELEM LISTEXPR2 | e rule
 
 ```
-STMTS -> STMT STMTS'
-STMTS' -> STMT STMTS' | e
+STMTS -> STMT STMTS2
+STMTS2 -> STMT STMTS2 | e
 STMT -> ASSIGN ; | LISTEXPR ;
 ASSIGN -> set VAR LISTEXPR
-LISTEXPR -> LISTELEM LISTEXPR'
-LISTEXPR' -> + LISTELEM LISTEXPR' | e
+LISTEXPR -> LISTELEM LISTEXPR2
+LISTEXPR2 -> + LISTELEM LISTEXPR2 | e
 LISTELEM -> VAR | ( ITEMS ) | cdr LISTELEM
 VAR -> char
 ITEMS -> ITEM ITEMS | e
@@ -63,11 +63,11 @@ First and Follow Sets
 | Token     | First                         | Follow                      |
 |-----------|-------------------------------|-----------------------------|
 | STMTS     | ( cdr char set                | $                           |
-| STMTS'    | ( cdr char set e              | $                           |
+| STMTS2    | ( cdr char set e              | $                           |
 | STMT      | ( cdr char set                | ( cdr char set              |
 | ASSIGN    | set                           | ;                           |
 | LISTEXPR  | ( cdr char                    | ;                           |
-| LISTEXPR' | + e                           | ;                           |
+| LISTEXPR2 | + e                           | ;                           |
 | LISTELEM  | ( cdr char                    | + ;                         |
 | VAR       | char                          | + ; ( cdr char              |
 | ITEMS     | ( car cdr char e int real str | )                           |
