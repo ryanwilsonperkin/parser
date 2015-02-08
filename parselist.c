@@ -8,14 +8,32 @@
 
 token tok;
 
+char *token_name(token t)
+{
+        switch (t) {
+        case INT: return "INT";
+        case REAL: return "REAL";
+        case LPAREN: return "LPAREN";
+        case RPAREN: return "RPAREN";
+        case CAR: return "CAR";
+        case CDR: return "CDR";
+        case SET: return "SET";
+        case PLUS: return "PLUS";
+        case SEMICOLON: return "SEMICOLON";
+        case CHAR: return "CHAR";
+        case STR: return "STR";
+        case END: return "END";
+        }
+}
+
 void error(token *expected, int n_expected)
 {
         int i;
         fprintf(stderr, "line %d: error: expected ", line_num);
         for (i = 0; i < n_expected; i++) {
-                fprintf(stderr, "%d, ", expected[i]);
+                fprintf(stderr, "%s, ", token_name(expected[i]));
         }
-        fprintf(stderr, "received %d\n", tok);
+        fprintf(stderr, "received %s\n", token_name(tok));
         exit(1);
 }
 
