@@ -66,7 +66,7 @@ void rule_stmts()
 
 void rule_stmts2()
 {
-        token first_and_follow[] = {LPAREN, CDR, CHAR, SET};
+        token first_and_follow[] = {LPAREN, CDR, CHAR, SET, END};
         switch (tok) {
         case LPAREN:
         case CDR:
