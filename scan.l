@@ -1,6 +1,8 @@
 %{
 #include "token.h"
 #define YY_DECL token yylex(void)
+
+int line_num = 1;
 %}
 
 INT         -?(0|[1-9][0-9]*)
@@ -15,9 +17,11 @@ SEMICOLON   ;
 CHAR        [^[:space:]]
 STR         [^[:space:]][^[:space:]]+
 SPACE       [[:space:]]+
+NEWLINE     \n
 
 %%
 
+{NEWLINE}   line_num++;
 {SPACE}     /* Ignore whitespace */
 {INT}       return INT;
 {REAL}      return REAL;

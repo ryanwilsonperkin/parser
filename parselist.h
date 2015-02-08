@@ -3,6 +3,8 @@
 
 #include "token.h"
 
+extern int line_num;
+
 extern token yylex();
 void get_next_token();
 
