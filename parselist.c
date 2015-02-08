@@ -66,6 +66,7 @@ void rule_stmts()
 
 void rule_stmts2()
 {
+        token first_and_follow[] = {LPAREN, CDR, CHAR, SET};
         switch (tok) {
         case LPAREN:
         case CDR:
@@ -74,7 +75,8 @@ void rule_stmts2()
                 rule_stmt();
                 rule_stmts2();
                 break;
-        default: return;  // epsilon
+        case END: return;  // epsilon
+        default: error(first_and_follow, ARR_LEN(first_and_follow));
         }
 }
 
@@ -125,13 +127,25 @@ void rule_listexpr()
 
 void rule_listexpr2()
 {
+        token first_and_follow[] = {PLUS, SEMICOLON, LPAREN, RPAREN, CAR, CDR,
+                CHAR, INT, REAL, STR};
         switch (tok) {
         case PLUS:
                 consume(PLUS);
                 rule_listelem();
                 rule_listexpr2();
                 break;
-        default: return;  // epsilon
+        case SEMICOLON: 
+        case LPAREN:
+        case RPAREN:
+        case CAR:
+        case CDR:
+        case CHAR:
+        case INT:
+        case REAL:
+        case STR:
+                return;  // epsilon
+        default: error(first_and_follow, ARR_LEN(first_and_follow));
         }
 }
 
@@ -168,6 +182,8 @@ void rule_var()
 
 void rule_items()
 {
+        token first_and_follow[] = {LPAREN, CAR, CDR, CHAR, INT, REAL, STR,
+                RPAREN};
         switch (tok) {
         case LPAREN:
         case CAR:
@@ -179,7 +195,8 @@ void rule_items()
                 rule_item();
                 rule_items();
                 break;
-        default: return;  // epsilon
+        case RPAREN: return;  // epsilon
+        default: error(first_and_follow, ARR_LEN(first_and_follow));
         }
 }
 
