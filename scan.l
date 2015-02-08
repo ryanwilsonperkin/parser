@@ -14,9 +14,11 @@ PLUS        \+
 SEMICOLON   ;
 CHAR        [^[:space:]]
 STR         [^[:space:]][^[:space:]]+
+SPACE       [[:space:]]+
 
 %%
 
+{SPACE}     /* Ignore whitespace */
 {INT}       return INT;
 {REAL}      return REAL;
 {LPAREN}    return LPAREN;
