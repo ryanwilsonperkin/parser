@@ -28,3 +28,4 @@ STR         [^[:space:]][^[:space:]]+
 {SEMICOLON} return SEMICOLON; 
 {CHAR}      return CHAR;
 {STR}       return STR;
+<<EOF>>     return END;

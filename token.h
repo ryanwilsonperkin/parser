@@ -12,7 +12,8 @@ typedef enum token_t {
         PLUS,
         SEMICOLON,
         CHAR,
-        STR
+        STR,
+        END
 } token;
 
 #endif  // PARSER_TOKEN_H
