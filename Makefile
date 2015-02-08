@@ -1,6 +1,12 @@
 CC=gcc
 LEX=flex
 
+parselist: parselist.o scan.o
+	$(CC) -o $@ $^ -ll
+
+parselist.o: parselist.c
+	$(CC) -o $@ -c $^
+
 scan.o: scan.c
 	$(CC) -o $@ -c $^
 
