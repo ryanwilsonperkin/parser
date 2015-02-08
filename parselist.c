@@ -230,5 +230,6 @@ int main()
 {
         get_next_token();
         rule_stmts();
+        consume(END);
         return 0;
 }
