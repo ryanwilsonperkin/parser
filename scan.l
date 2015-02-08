@@ -14,8 +14,8 @@ CDR         cdr
 SET         set
 PLUS        \+
 SEMICOLON   ;
-CHAR        [^[:space:]]
-STR         [^[:space:]][^[:space:]]+
+CHAR        [^[:space:]\(\)\+;]
+STR         [^[:space:]\(\)\+;][^[:space:]\(\)\+;]+
 SPACE       [[:space:]]+
 NEWLINE     \n
 
