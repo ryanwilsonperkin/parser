@@ -21,18 +21,18 @@ token tok;
 char *token_name(token t)
 {
         switch (t) {
-        case INT: return "INT";
-        case REAL: return "REAL";
-        case LPAREN: return "LPAREN";
-        case RPAREN: return "RPAREN";
-        case CAR: return "CAR";
-        case CDR: return "CDR";
-        case SET: return "SET";
-        case PLUS: return "PLUS";
-        case SEMICOLON: return "SEMICOLON";
-        case CHAR: return "CHAR";
-        case STR: return "STR";
-        case END: return "END";
+        case INT: return "integer";
+        case REAL: return "real";
+        case LPAREN: return "'('";
+        case RPAREN: return "')'";
+        case CAR: return "car";
+        case CDR: return "cdr";
+        case SET: return "set";
+        case PLUS: return "'+'";
+        case SEMICOLON: return "';'";
+        case CHAR: return "character";
+        case STR: return "string";
+        case END: return "EOF";
         }
 }
 
