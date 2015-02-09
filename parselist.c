@@ -38,7 +38,7 @@ char *token_name(token t)
 
 /*
  * error
- * Print a message to stderr when current token doesn't match expected values
+ * Print a message to stdout when current token doesn't match expected values
  *
  * Accepts:
  *      expected: array of expected tokens
@@ -47,11 +47,11 @@ char *token_name(token t)
 void error(token *expected, int n_expected)
 {
         int i;
-        fprintf(stderr, "line %d: col %d: error: expected ", line_num, col_num);
+        printf("line %d: col %d: error: expected ", line_num, col_num);
         for (i = 0; i < n_expected; i++) {
-                fprintf(stderr, "%s, ", token_name(expected[i]));
+                printf("%s, ", token_name(expected[i]));
         }
-        fprintf(stderr, "received %s\n", token_name(tok));
+        printf("received %s\n", token_name(tok));
 }
 
 /*
