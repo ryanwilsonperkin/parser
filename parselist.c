@@ -51,12 +51,11 @@ void consume(token t)
 void skip_to(token *toks, int n_toks)
 {
         int i;
-        int finished = 0;
-        while (tok != END && !finished) {
-                for (i = 0; i < n_toks; i++) {
-                        if (tok == toks[i]) finished = 1;
-                }
+        while (tok != END) {
                 get_next_token();
+                for (i = 0; i < n_toks; i++) {
+                        if (tok == toks[i]) return;
+                }
         }
 }
 
