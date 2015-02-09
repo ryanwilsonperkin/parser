@@ -18,7 +18,7 @@ PLUS        \+
 SEMICOLON   ;
 CHAR        [^[:space:]\(\)\+;]
 STR         [^[:space:]\(\)\+;][^[:space:]\(\)\+;]+
-SPACE       [[:space:]]+
+SPACE       [ \t]+
 NEWLINE     \n
 
 %%
