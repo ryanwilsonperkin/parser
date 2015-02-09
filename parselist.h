@@ -9,6 +9,9 @@ extern int col_num;
 /* Current line number from lexer */
 extern int line_num;
 
+/* Current line */
+extern char *line_buf;
+
 /* Retrieve next token from lexer */
 extern token yylex();
 

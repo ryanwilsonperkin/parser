@@ -47,12 +47,21 @@ char *token_name(token t)
 void error(token *expected, int n_expected)
 {
         int i;
-        printf("line %d: col %d: error: expected ", line_num, col_num);
+        printf("stdin:%d:%d: error: expected ", line_num, col_num);
         for (i = 0; i < n_expected; i++) {
                 printf("%s", token_name(expected[i]));
                 if (i < n_expected - 1) printf(" or ");
         }
         printf(" but received %s\n", token_name(tok));
+
+        /* Print line buffer and position marker of error */
+        if (line_buf && line_buf[0]) {
+                printf("%s\n", line_buf);
+                for (i = 0; i < col_num - 2; i++) {
+                        printf(" ");
+                }
+                printf("^\n");
+        }
 }
 
 /*
