@@ -1,6 +1,13 @@
 Parser
 ===
 
+Running
+---
+
+- Compile with `make`, `make parselist`, or `make all`.
+- Run using `./parselist`
+- Reads from stdin and writes to stdout
+
 Original Grammar
 ---
 
