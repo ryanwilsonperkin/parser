@@ -1,3 +1,8 @@
+/*
+ * scan.l
+ * Description of a simple scanner
+ * Includes functions for copying line buffer
+ */
 %{
 #include <stdlib.h>
 #include <string.h>

@@ -1,3 +1,7 @@
+/*
+ * parselist.c
+ * Implementation of a simple parser
+ */
 #include <stdio.h>
 
 #include "parselist.h"

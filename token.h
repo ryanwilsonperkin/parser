@@ -1,3 +1,7 @@
+/*
+ * token.h
+ * Definition for possible token types
+ */
 #ifndef PARSER_TOKEN_H
 #define PARSER_TOKEN_H
 

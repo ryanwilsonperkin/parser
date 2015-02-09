@@ -1,3 +1,7 @@
+/*
+ * parselist.h
+ * Header definitions for a simple parser
+ */
 #ifndef PARSER_PARSELIST_H
 #define PARSER_PARSELIST_H
 
