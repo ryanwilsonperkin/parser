@@ -4,10 +4,21 @@
 #include "parselist.h"
 #include "token.h"
 
+/* Common macro for calculating number of elements in array */
 #define ARR_LEN(arr) sizeof(arr) / sizeof(arr[0])
 
+/* Globally accesible current token variable */
 token tok;
 
+/*
+ * token_name
+ * Get the printable name of a token.
+ *
+ * Accepts:
+ *      t: the token
+ *
+ * Returns: the name associated with the token
+ */
 char *token_name(token t)
 {
         switch (t) {
@@ -26,6 +37,14 @@ char *token_name(token t)
         }
 }
 
+/*
+ * error
+ * Print a message to stderr when current token doesn't match expected values
+ *
+ * Accepts:
+ *      expected: array of expected tokens
+ *      n_expected: number of tokens in expected array
+ */
 void error(token *expected, int n_expected)
 {
         int i;
@@ -36,11 +55,22 @@ void error(token *expected, int n_expected)
         fprintf(stderr, "received %s\n", token_name(tok));
 }
 
+/*
+ * get_next_token
+ * Fetch the next token from lex and set to global variable
+ */
 void get_next_token()
 {
         tok = yylex();
 }
 
+/*
+ * consume
+ * Advance to next token as long as current token matches
+ *
+ * Accepts:
+ *      t: the token to match
+ */
 void consume(token t)
 {
         token expected[] = {t};
@@ -48,6 +78,14 @@ void consume(token t)
         else error(expected, ARR_LEN(expected));
 }
 
+/*
+ * skip_to
+ * Advance lexer until token matches value in list or EOF
+ *
+ * Accepts:
+ *      toks: list of tokens to match
+ *      n_toks: number of tokens in toks list
+ */
 void skip_to(token *toks, int n_toks)
 {
         int i;
@@ -59,6 +97,10 @@ void skip_to(token *toks, int n_toks)
         }
 }
 
+/*
+ * rule_stmts
+ * Recursive descent for STMTS rule
+ */
 void rule_stmts()
 {
         token first[] = {LPAREN, CDR, CHAR, SET};
@@ -77,6 +119,10 @@ void rule_stmts()
         }
 }
 
+/*
+ * rule_stmts2
+ * Recursive descent for STMTS2 rule
+ */
 void rule_stmts2()
 {
         token first_and_follow[] = {LPAREN, CDR, CHAR, SET, END};
@@ -96,6 +142,10 @@ void rule_stmts2()
         }
 }
 
+/*
+ * rule_stmt
+ * Recursive descent for STMT rule
+ */
 void rule_stmt()
 {
         token first[] = {LPAREN, CDR, CHAR, SET};
@@ -117,6 +167,10 @@ void rule_stmt()
         }
 }
 
+/*
+ * rule_assign
+ * Recursive descent for ASSIGN rule
+ */
 void rule_assign()
 {
         token first[] = {SET};
@@ -133,6 +187,10 @@ void rule_assign()
         }
 }
 
+/*
+ * rule_listexpr
+ * Recursive descent for LISTEXPR rule
+ */
 void rule_listexpr()
 {
         token first[] = {LPAREN, CDR, CHAR};
@@ -151,6 +209,10 @@ void rule_listexpr()
         }
 }
 
+/*
+ * rule_listexpr2
+ * Recursive descent for LISTEXPR2 rule
+ */
 void rule_listexpr2()
 {
         token first_and_follow[] = {PLUS, SEMICOLON, LPAREN, RPAREN, CAR, CDR,
@@ -179,6 +241,10 @@ void rule_listexpr2()
         }
 }
 
+/*
+ * rule_listelem
+ * Recursive descent for LISTELEM rule
+ */
 void rule_listelem()
 {
         token first[] = {LPAREN, CDR, CHAR};
@@ -202,6 +268,10 @@ void rule_listelem()
         }
 }
 
+/*
+ * rule_var
+ * Recursive descent for VAR rule
+ */
 void rule_var()
 {
         token first[] = {CHAR};
@@ -216,6 +286,10 @@ void rule_var()
         }
 }
 
+/*
+ * rule_items
+ * Recursive descent for ITEMS rule
+ */
 void rule_items()
 {
         token first_and_follow[] = {LPAREN, CAR, CDR, CHAR, INT, REAL, STR,
@@ -239,6 +313,10 @@ void rule_items()
         }
 }
 
+/*
+ * rule_item
+ * Recursive descent for ITEM rule
+ */
 void rule_item()
 {
         token first[] = {LPAREN, CAR, CDR, CHAR, INT, REAL, STR};
