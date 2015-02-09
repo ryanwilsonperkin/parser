@@ -50,7 +50,9 @@ void error(token *expected, int n_expected)
         printf("stdin:%d:%d: error: expected ", line_num, col_num);
         for (i = 0; i < n_expected; i++) {
                 printf("%s", token_name(expected[i]));
-                if (i < n_expected - 1) printf(" or ");
+                if (i < n_expected - 1) {
+                        printf(" or ");
+                }
         }
         printf(" but received %s\n", token_name(tok));
 
@@ -83,8 +85,11 @@ void get_next_token()
 void consume(token t)
 {
         token expected[] = {t};
-        if (t == tok) get_next_token();
-        else error(expected, ARR_LEN(expected));
+        if (t == tok) {
+                get_next_token();
+        } else {
+                error(expected, ARR_LEN(expected));
+        }
 }
 
 /*
@@ -101,7 +106,9 @@ void skip_to(token *toks, int n_toks)
         while (tok != END) {
                 get_next_token();
                 for (i = 0; i < n_toks; i++) {
-                        if (tok == toks[i]) return;
+                        if (tok == toks[i]) {
+                                return;
+                        }
                 }
         }
 }
