@@ -49,9 +49,10 @@ void error(token *expected, int n_expected)
         int i;
         printf("line %d: col %d: error: expected ", line_num, col_num);
         for (i = 0; i < n_expected; i++) {
-                printf("%s, ", token_name(expected[i]));
+                printf("%s", token_name(expected[i]));
+                if (i < n_expected - 1) printf(" or ");
         }
-        printf("received %s\n", token_name(tok));
+        printf(" but received %s\n", token_name(tok));
 }
 
 /*
