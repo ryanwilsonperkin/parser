@@ -1,12 +1,21 @@
 Parser
 ===
 
+A recursive descent parser for a simple grammar.
+
 Running
 ---
 
 - Compile with `make`, `make parselist`, or `make all`.
 - Run using `./parselist`
 - Reads from stdin and writes to stdout
+
+Files
+---
+- __token.h__: definition for possible token types
+- __parselist.h__: header definitions for a simple parser
+- __parselist.c__: implementation of a simple parser
+- __scan.l__: description of a simple scanner
 
 Original Grammar
 ---
